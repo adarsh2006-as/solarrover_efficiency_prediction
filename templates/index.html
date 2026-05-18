@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Solar Rover Dashboard</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Solar Rover Efficiency Dashboard</h1>
+
+    <form action="/predict" method="post">
+
+        <input type="number" step="any"
+               name="SolarVoltage"
+               placeholder="Solar Voltage"
+               required>
+
+        <input type="number" step="any"
+               name="BatteryVoltage"
+               placeholder="Battery Voltage"
+               required>
+
+        <input type="number" step="any"
+               name="SunlightIntensity"
+               placeholder="Sunlight Intensity"
+               required>
+
+        <input type="number" step="any"
+               name="MotorRPM"
+               placeholder="Motor RPM"
+               required>
+
+        <input type="number" step="any"
+               name="LoadWeight"
+               placeholder="Load Weight"
+               required>
+
+        <input type="number" step="any"
+               name="Temperature"
+               placeholder="Temperature"
+               required>
+
+        <button type="submit">
+            Predict Rover Performance
+        </button>
+
+    </form>
+
+    <div class="dashboard">
+
+        <div class="card">
+            <h2>Battery Usage</h2>
+            <p>{{ battery }} %</p>
+        </div>
+
+        <div class="card">
+            <h2>Speed</h2>
+            <p>{{ speed }} km/h</p>
+        </div>
+
+        <div class="card">
+            <h2>Solar Efficiency</h2>
+            <p>{{ efficiency }} %</p>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

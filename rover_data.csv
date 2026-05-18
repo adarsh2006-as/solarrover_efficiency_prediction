@@ -1,0 +1,6 @@
+SolarVoltage,BatteryVoltage,SunlightIntensity,MotorRPM,LoadWeight,Temperature,BatteryUsage,Speed,Efficiency
+18,12.0,850,3000,5,35,22,18,88
+20,12.5,920,3200,4,33,20,20,91
+16,11.8,700,2800,6,38,28,15,75
+21,13.0,980,3400,3,30,18,24,94
+19,12.2,870,3100,5,34,23,19,86
