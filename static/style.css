@@ -1,70 +1,444 @@
-body{
-    background:#0f172a;
-    color:white;
-    font-family:Arial;
+*{
     margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
 }
+
+body{
+    background:#020617;
+    overflow-x:hidden;
+    color:white;
+}
+
+/* Background Glow */
+
+.background{
+    position:fixed;
+    width:100%;
+    height:100%;
+
+    background:
+    radial-gradient(circle at top left,#0ea5e9,transparent 30%),
+    radial-gradient(circle at bottom right,#22c55e,transparent 30%);
+
+    z-index:-1;
+    opacity:0.25;
+}
+
+/* Animation Area */
+
+.animation-area{
+    position:relative;
+    width:100%;
+    height:240px;
+    overflow:hidden;
+}
+
+/* Sun */
+
+.sun{
+    position:absolute;
+    top:30px;
+    right:120px;
+
+    width:100px;
+    height:100px;
+
+    background:#facc15;
+    border-radius:50%;
+
+    box-shadow:
+    0 0 20px #facc15,
+    0 0 40px #facc15,
+    0 0 80px #facc15;
+
+    animation:sunGlow 3s infinite alternate;
+}
+
+@keyframes sunGlow{
+
+    from{
+        transform:scale(1);
+    }
+
+    to{
+        transform:scale(1.1);
+    }
+
+}
+
+/* Road */
+
+.road{
+    position:absolute;
+    bottom:0;
+
+    width:200%;
+    height:80px;
+
+    background:#1e293b;
+
+    border-top:4px solid #64748b;
+}
+
+.road::before{
+
+    content:'';
+
+    position:absolute;
+
+    width:100%;
+    height:6px;
+
+    top:35px;
+
+    background:
+    repeating-linear-gradient(
+        to right,
+        white 0px,
+        white 60px,
+        transparent 60px,
+        transparent 120px
+    );
+
+    animation:roadMove 2s linear infinite;
+}
+
+@keyframes roadMove{
+
+    from{
+        transform:translateX(0);
+    }
+
+    to{
+        transform:translateX(-120px);
+    }
+
+}
+
+/* Rover */
+
+.rover{
+    position:absolute;
+
+    bottom:60px;
+    left:-250px;
+
+    width:230px;
+    height:110px;
+
+    animation:roverMove 12s linear infinite;
+}
+
+@keyframes roverMove{
+
+    from{
+        left:-250px;
+    }
+
+    to{
+        left:110%;
+    }
+
+}
+
+/* Solar Panel */
+
+.solar-panel{
+
+    position:absolute;
+
+    top:0;
+    left:55px;
+
+    width:120px;
+    height:35px;
+
+    background:#0f172a;
+
+    border:3px solid #38bdf8;
+
+    border-radius:6px;
+
+    transform:skew(-15deg);
+
+    box-shadow:0 0 15px rgba(56,189,248,0.8);
+}
+
+/* Car Body */
+
+.car-body{
+
+    position:absolute;
+
+    bottom:20px;
+
+    width:230px;
+    height:55px;
+
+    background:
+    linear-gradient(
+        90deg,
+        #0ea5e9,
+        #22c55e
+    );
+
+    border-radius:20px 45px 20px 20px;
+
+    box-shadow:
+    0 0 20px rgba(14,165,233,0.6);
+}
+
+/* Wheels */
+
+.wheel{
+
+    position:absolute;
+
+    bottom:0;
+
+    width:42px;
+    height:42px;
+
+    background:#020617;
+
+    border:5px solid #94a3b8;
+
+    border-radius:50%;
+
+    animation:wheelSpin 1s linear infinite;
+}
+
+.wheel1{
+    left:30px;
+}
+
+.wheel2{
+    right:30px;
+}
+
+@keyframes wheelSpin{
+
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+/* Main Container */
 
 .container{
-    width:80%;
+    width:90%;
     margin:auto;
-    padding:20px;
+    padding:30px;
 }
 
-h1{
+/* Header */
+
+.header{
     text-align:center;
-    color:#38bdf8;
-    margin-bottom:30px;
+    margin-bottom:40px;
 }
 
-form{
+.header h1{
+    font-size:42px;
+    color:#38bdf8;
+    margin-bottom:10px;
+}
+
+.header p{
+    color:#cbd5e1;
+    font-size:18px;
+}
+
+/* Grid */
+
+.main-grid{
     display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:15px;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+}
+
+/* Sections */
+
+.form-section,
+.dashboard-section{
+
+    background:rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(12px);
+
+    border:1px solid rgba(255,255,255,0.1);
+
+    border-radius:20px;
+
+    padding:30px;
+
+    box-shadow:0 8px 32px rgba(0,0,0,0.3);
+}
+
+h2{
+    margin-bottom:25px;
+    color:#38bdf8;
+}
+
+/* Input Groups */
+
+.input-group{
+    margin-bottom:20px;
+}
+
+label{
+    display:block;
+    margin-bottom:8px;
+    color:#e2e8f0;
 }
 
 input{
-    padding:12px;
+
+    width:100%;
+
+    padding:14px;
+
     border:none;
-    border-radius:8px;
+
+    border-radius:12px;
+
+    background:#0f172a;
+
+    color:white;
+
     font-size:16px;
+
+    border:1px solid #334155;
 }
 
+input:focus{
+
+    outline:none;
+
+    border-color:#38bdf8;
+
+    box-shadow:0 0 10px #38bdf8;
+}
+
+/* Button */
+
 button{
-    grid-column:span 2;
-    padding:15px;
-    background:#38bdf8;
-    color:white;
+
+    width:100%;
+
+    padding:16px;
+
     border:none;
-    border-radius:8px;
+
+    border-radius:12px;
+
+    background:
+    linear-gradient(
+        90deg,
+        #0ea5e9,
+        #22c55e
+    );
+
+    color:white;
+
     font-size:18px;
+
+    font-weight:bold;
+
     cursor:pointer;
+
+    transition:0.3s;
 }
 
 button:hover{
-    background:#0284c7;
+
+    transform:translateY(-3px);
+
+    box-shadow:
+    0 10px 20px rgba(14,165,233,0.4);
 }
 
-.dashboard{
-    margin-top:40px;
+/* Cards */
+
+.cards{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:1fr;
     gap:20px;
 }
 
 .card{
-    background:#1e293b;
+
     padding:30px;
-    border-radius:12px;
+
+    border-radius:18px;
+
     text-align:center;
-    box-shadow:0px 0px 10px rgba(0,0,0,0.5);
+
+    transition:0.3s;
+
+    border:1px solid rgba(255,255,255,0.1);
 }
 
-.card h2{
-    color:#38bdf8;
+.card:hover{
+    transform:scale(1.03);
+}
+
+.card h3{
+    margin-bottom:15px;
+    font-size:24px;
 }
 
 .card p{
-    font-size:32px;
+    font-size:40px;
     font-weight:bold;
+}
+
+/* Card Colors */
+
+.battery{
+    background:
+    linear-gradient(
+        135deg,
+        #16a34a,
+        #22c55e
+    );
+}
+
+.speed{
+    background:
+    linear-gradient(
+        135deg,
+        #2563eb,
+        #38bdf8
+    );
+}
+
+.efficiency{
+    background:
+    linear-gradient(
+        135deg,
+        #ca8a04,
+        #facc15
+    );
+}
+
+/* Responsive */
+
+@media(max-width:900px){
+
+    .main-grid{
+        grid-template-columns:1fr;
+    }
+
+    .header h1{
+        font-size:32px;
+    }
+
 }

@@ -1,76 +1,175 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Solar Rover Dashboard</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Solar Rover AI Dashboard</title>
+
     <link rel="stylesheet"
           href="{{ url_for('static', filename='style.css') }}">
+
 </head>
 
 <body>
 
-<div class="container">
+    <!-- Background Glow -->
+    <div class="background"></div>
 
-    <h1>Solar Rover Efficiency Dashboard</h1>
+    <!-- Solar Rover Animation -->
+    <div class="animation-area">
 
-    <form action="/predict" method="post">
+        <div class="sun"></div>
 
-        <input type="number" step="any"
-               name="SolarVoltage"
-               placeholder="Solar Voltage"
-               required>
+        <div class="road"></div>
 
-        <input type="number" step="any"
-               name="BatteryVoltage"
-               placeholder="Battery Voltage"
-               required>
+        <div class="rover">
 
-        <input type="number" step="any"
-               name="SunlightIntensity"
-               placeholder="Sunlight Intensity"
-               required>
+            <div class="solar-panel"></div>
 
-        <input type="number" step="any"
-               name="MotorRPM"
-               placeholder="Motor RPM"
-               required>
+            <div class="car-body"></div>
 
-        <input type="number" step="any"
-               name="LoadWeight"
-               placeholder="Load Weight"
-               required>
+            <div class="wheel wheel1"></div>
 
-        <input type="number" step="any"
-               name="Temperature"
-               placeholder="Temperature"
-               required>
+            <div class="wheel wheel2"></div>
 
-        <button type="submit">
-            Predict Rover Performance
-        </button>
-
-    </form>
-
-    <div class="dashboard">
-
-        <div class="card">
-            <h2>Battery Usage</h2>
-            <p>{{ battery }} %</p>
-        </div>
-
-        <div class="card">
-            <h2>Speed</h2>
-            <p>{{ speed }} km/h</p>
-        </div>
-
-        <div class="card">
-            <h2>Solar Efficiency</h2>
-            <p>{{ efficiency }} %</p>
         </div>
 
     </div>
 
-</div>
+    <!-- Main Container -->
+    <div class="container">
+
+        <!-- Header -->
+        <div class="header">
+
+            <h1>☀ Solar Rover AI Dashboard</h1>
+
+            <p>
+                Telemetry & Performance Prediction System
+            </p>
+
+        </div>
+
+        <!-- Grid -->
+        <div class="main-grid">
+
+            <!-- Form -->
+            <div class="form-section">
+
+                <h2>Input Parameters</h2>
+
+                <form action="/predict" method="post">
+
+                    <div class="input-group">
+                        <label>Solar Voltage (V)</label>
+
+                        <input type="number"
+                               step="any"
+                               name="SolarVoltage"
+                               placeholder="Enter solar voltage"
+                               required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Battery Voltage (V)</label>
+
+                        <input type="number"
+                               step="any"
+                               name="BatteryVoltage"
+                               placeholder="Enter battery voltage"
+                               required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Sunlight Intensity</label>
+
+                        <input type="number"
+                               step="any"
+                               name="SunlightIntensity"
+                               placeholder="Enter sunlight intensity"
+                               required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Motor RPM</label>
+
+                        <input type="number"
+                               step="any"
+                               name="MotorRPM"
+                               placeholder="Enter motor RPM"
+                               required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Load Weight (kg)</label>
+
+                        <input type="number"
+                               step="any"
+                               name="LoadWeight"
+                               placeholder="Enter load weight"
+                               required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Temperature (°C)</label>
+
+                        <input type="number"
+                               step="any"
+                               name="Temperature"
+                               placeholder="Enter temperature"
+                               required>
+                    </div>
+
+                    <button type="submit">
+                        Predict Rover Performance
+                    </button>
+
+                </form>
+
+            </div>
+
+            <!-- Dashboard -->
+            <div class="dashboard-section">
+
+                <h2>Prediction Dashboard</h2>
+
+                <div class="cards">
+
+                    <div class="card battery">
+
+                        <h3>🔋 Battery Usage</h3>
+
+                        <p>{{ battery }} %</p>
+
+                    </div>
+
+                    <div class="card speed">
+
+                        <h3>🚀 Rover Speed</h3>
+
+                        <p>{{ speed }} km/h</p>
+
+                    </div>
+
+                    <div class="card efficiency">
+
+                        <h3>☀ Solar Efficiency</h3>
+
+                        <p>{{ efficiency }} %</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </body>
 </html>
